@@ -1,5 +1,5 @@
 # Dev Coffee Reminder
-> Small NodeJS script to handle recuring reminders for dev coffee presentation
+> Small NodeJS script to handle recurring reminders for dev coffee presentation
 
 ## Install 
 
