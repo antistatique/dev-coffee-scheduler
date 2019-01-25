@@ -13,7 +13,7 @@ Then :
 ```bash
 $ cd path/to/project
 $ yarn
-$ touch .env && vim .env
+$ cp .env.sample .env && vim .env
 $ nodemon index.js
 ```
 
