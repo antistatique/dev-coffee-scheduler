@@ -48,7 +48,7 @@ const reminder = async ({ setNew = false, message }) => {
         text: message
           .replace('NEW_SPEAKER', newSpeaker)
           .replace('NEXT_SPEAKER', nextSpeaker),
-        channel: '#dev-coffee-scheduler',
+        channel: '#dev',
       },
     })
       .then(res => {
