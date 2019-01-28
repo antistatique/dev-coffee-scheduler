@@ -69,25 +69,36 @@ const reminder = async ({ setNew = false, message }) => {
   }
 };
 
+/*
+RecurrenceRule properties
+- second (0-59)
+- minute (0-59)
+- hour (0-23)
+- date (1-31)
+- month (0-11)
+- year
+- dayOfWeek (0-6) Starting with Sunday
+*/
+
 // Monday reminder the wednesday presentation
-// const mondayReminder = new schedule.RecurrenceRule();
-// mondayReminder.dayOfWeek = [0, new schedule.Range(0, 6)]; // Monday
-// mondayReminder.hour = 15; // At 9am
-// mondayReminder.second = 10; // tests purpose
+const mondayReminder = new schedule.RecurrenceRule();
+mondayReminder.dayOfWeek = 1; // Monday
+mondayReminder.hour = 15; // At 9am
+mondayReminder.minute = 10; // tests purpose
 
-// schedule.scheduleJob(mondayReminder, () =>
-//   reminder({
-//     setNew: true,
-//     message: `
-//       <!here|here> :warning: mercredi *${moment()
-//         .add({ days: 2 })
-//         .format(
-//           'LL',
-//         )}*, c'est à *NEW_SPEAKER* de nous présenter quelque chose :male-teacher:
+schedule.scheduleJob(mondayReminder, () =>
+  reminder({
+    setNew: true,
+    message: `
+      <!here|here> :warning: mercredi *${moment()
+        .add({ days: 2 })
+        .format(
+          'LL',
+        )}*, c'est à *NEW_SPEAKER* de nous présenter quelque chose :male-teacher:
 
-//               :calendar: La semaine prochaine, ce sera au tour de NEXT_SPEAKER !
-//       `,
-//   }),
-// );
+              :calendar: La semaine prochaine, ce sera au tour de NEXT_SPEAKER !
+      `,
+  }),
+);
 
 console.log('Scheduler restarted!');
