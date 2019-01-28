@@ -20,9 +20,11 @@ const getAsync = promisify(db.get).bind(db);
  * @param {message} String message content with NEW_SPEAKER and NEXT_SPEAKER placeholders
  */
 const reminder = async ({ setNew = false, message }) => {
+  console.log(`Reminder started at ${moment().format()}`);
   const isActive = await getAsync('is_active');
 
   if (JSON.parse(isActive)) {
+    console.log('-> active reminder');
     const speakersData = await getAsync('speakers');
     const speakers = speakersData.split(' ');
     const lastSpeaker = await getAsync('last_speaker');
@@ -63,7 +65,7 @@ const reminder = async ({ setNew = false, message }) => {
 // Monday reminder the wednesday presentation
 const mondayReminder = new schedule.RecurrenceRule();
 mondayReminder.dayOfWeek = [0, new schedule.Range(0, 6)]; // Monday
-mondayReminder.hour = 14; // At 9am
+mondayReminder.hour = 15; // At 9am
 // mondayReminder.second = 10; // tests purpose
 
 schedule.scheduleJob(mondayReminder, () =>
@@ -80,3 +82,5 @@ schedule.scheduleJob(mondayReminder, () =>
       `,
   }),
 );
+
+console.log('Scheduler restarted !');
