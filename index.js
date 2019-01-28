@@ -83,4 +83,4 @@ schedule.scheduleJob(mondayReminder, () =>
   }),
 );
 
-console.log('Scheduler restarted !');
+console.log('Scheduler restarted!');
