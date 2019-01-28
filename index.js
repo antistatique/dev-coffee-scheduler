@@ -1,11 +1,18 @@
 require('dotenv').config();
 
 const { promisify } = require('util');
+const express = require('express');
 const axios = require('axios');
 const schedule = require('node-schedule');
 const redis = require('redis');
 const moment = require('moment');
 const momentFrCh = require('moment/locale/fr-ch');
+
+const app = express();
+app.get('/', (req, res) => res.send('dev-coffee-scheduler'));
+app.listen(process.env.PORT || PORT, () =>
+  console.log(`Mini server started on ${process.env.PORT || PORT}`),
+);
 
 moment.updateLocale('fr-ch', momentFrCh);
 
