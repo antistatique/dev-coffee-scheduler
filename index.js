@@ -63,7 +63,8 @@ const reminder = async ({ setNew = false, message }) => {
 // Monday reminder the wednesday presentation
 const mondayReminder = new schedule.RecurrenceRule();
 mondayReminder.dayOfWeek = 1; // Monday
-mondayReminder.hour = 11; // At 9am
+mondayReminder.hour = 10; // At 9am
+mondayReminder.minute = 40; // At 9am
 // mondayReminder.second = 10; // tests purpose
 
 schedule.scheduleJob(mondayReminder, () =>
