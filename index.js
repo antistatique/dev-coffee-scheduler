@@ -83,8 +83,8 @@ RecurrenceRule properties
 // Monday reminder the wednesday presentation
 const mondayReminder = new schedule.RecurrenceRule();
 mondayReminder.dayOfWeek = 1; // Monday
-mondayReminder.hour = 15; // At 9am
-mondayReminder.minute = 10; // tests purpose
+mondayReminder.hour = 10; // At 9am
+mondayReminder.minute = 1; // 9:01am
 
 schedule.scheduleJob(mondayReminder, () =>
   reminder({
